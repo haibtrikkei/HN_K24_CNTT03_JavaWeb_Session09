@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Thêm mới nhân viên</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <h1>Thêm mới nhân viên</h1>
+        <form th:action="@{/employees/add}" th:object="${employeeDTO}" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="fullName">Họ tên</label>
+                <input type="text" class="form-control" id="fullName" th:field="*{fullName}">
+                <small th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}" class="text-danger"></small>
+            </div>
+            <div class="form-group">
+                <label for="male">Giới tính</label>
+                <input type="radio" id="male" th:value="true" th:field="*{gender}">Nam
+                <input type="radio" id="female" th:value="false" th:field="*{gender}">Nữ
+                <small th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}" class="text-danger"></small>
+            </div>
+            <div class="form-group">
+                <label for="company">Công ty</label>
+                <input type="text" class="form-control" id="company" th:field="*{company}">
+                <small th:if="${#fields.hasErrors('company')}" th:errors="*{company}" class="text-danger"></small>
+            </div>
+            <div class="form-group">
+                <label for="avatar">Avatar</label>
+                <input type="file" class="form-control" id="avatar" th:field="*{file}">
+                <small th:if="${#fields.hasErrors('file')}" th:errors="*{file}" class="text-danger"></small>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Thêm mới" class="btn btn-primary">
+                <input type="reset" value="Làm lại" class="btn btn-secondary">
+            </div>
+        </form>
+        <a th:href="@{/employees}">Quay lại danh sách</a>
+    </div>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+</html>
